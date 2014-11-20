@@ -61,9 +61,11 @@ function makeResume($in) {
   resume.bio.summary = $in.summary;
   
   var collection = $in.phoneNumbers.values;
-  for (i = 0, max = collection.length; i < max; i += 1) {
-    log('adding phone ' + collection[i].phoneType + ' ' + collection[i].phoneNumber);
-    resume.bio['phone'][collection[i].phoneType] = collection[i].phoneNumber;
+  if (collection) {
+    for (i = 0, max = collection.length; i < max; i += 1) {
+      log('adding phone ' + collection[i].phoneType + ' ' + collection[i].phoneNumber);
+      resume.bio['phone'][collection[i].phoneType] = collection[i].phoneNumber;
+    }
   }
 
   resume['references'] = $in.recommendationsReceived.values.map(function (obj) {
@@ -74,50 +76,58 @@ function makeResume($in) {
     };
   });
   
-  resume['publications'] = $in.publications.values.map(function (obj) {
-    log('adding publication ' + obj.title);
-    return { 
-      name: obj.title,
-      releaseDate: makeDate(obj.date),
-      publisher: '',
-      website: ''
-    };
-  });
+  if ($in.publications) {
+    resume['publications'] = $in.publications.values.map(function (obj) {
+      log('adding publication ' + obj.title);
+      return { 
+        name: obj.title,
+        releaseDate: makeDate(obj.date),
+        publisher: '',
+        website: ''
+      };
+    });
+  };
   
-  resume['work'] = $in.positions.values.map(function (obj) {
-    log('adding work ' + obj.company.name);
-    return {
-      company: obj.company.name,
-      position: obj.title,
-      website: '',
-      startDate: makeDate(obj.startDate),
-      endDate: makeDate(obj.endDate, Boolean(obj.isCurrent)),
-      summary: obj.summary,
-      highlights: []
-    }
-  });
+  if ($in.positions) {
+    resume['work'] = $in.positions.values.map(function (obj) {
+      log('adding work ' + obj.company.name);
+      return {
+        company: obj.company.name,
+        position: obj.title,
+        website: '',
+        startDate: makeDate(obj.startDate),
+        endDate: makeDate(obj.endDate, Boolean(obj.isCurrent)),
+        summary: obj.summary,
+        highlights: []
+      }
+    });
+  };
 
-  resume['education'] = $in.educations.values.map(function (obj) {
-    log('adding education ' + obj.schoolName);
-    return {
-      institution: obj.schoolName,
-      startDate: makeDate(obj.startDate),
-      endDate: makeDate(obj.endDate, obj.isCurrent),
-      area: obj.fieldOfStudy,
-      summary: obj.notes,
-      studyType: obj.degree,
-      courses: []
-    };
-  });
+  if ($in.educations) {
+    resume['education'] = $in.educations.values.map(function (obj) {
+      log('adding education ' + obj.schoolName);
+      return {
+        institution: obj.schoolName,
+        startDate: makeDate(obj.startDate),
+        endDate: makeDate(obj.endDate, obj.isCurrent),
+        area: obj.fieldOfStudy,
+        summary: obj.notes,
+        studyType: obj.degree,
+        courses: []
+      };
+    });
+  };
   
-  resume['skills'] = $in.skills.values.map(function (obj) {
-    log('adding skill ' + obj.skill.name);
-    return {
-      name: obj.skill.name,
-      level: 'beginner|intermediate|master',
-      keywords: []
-    };
-  });
+  if ($in.skills) {
+    resume['skills'] = $in.skills.values.map(function (obj) {
+      log('adding skill ' + obj.skill.name);
+      return {
+        name: obj.skill.name,
+        level: 'beginner|intermediate|master',
+        keywords: []
+      };
+    });
+  };
   
   return resume;
 };
@@ -125,9 +135,11 @@ function makeResume($in) {
 app.get('/', function(req, res) {
   if (req.session.accessToken) {
     var linkedIn = LinkedIn.init(req.session.accessToken);
-    linkedIn.people.me(function(err, $in) {
+    linkedIn.people.me(["id", "first-name", "last-name", "headline", "industry", "summary", "positions", "picture-url", "skills:(id)", "languages", "educations", "projects"], function(err, $in) {
       req.session.$in = $in;
+      console.error(JSON.stringify($in));
       resume = makeResume($in);
+      console.error(resume);
       resumeSchema.validate(resume, function (result, validationErr) {
         var exitCode = 0;
         if (validationErr || result.valid !== true) {
@@ -177,5 +189,5 @@ app.use(function(err, req, res, next) {
   next();
 });
 
-server = app.listen(80);
+server = app.listen(8000);
 console.log('Go visit ' + config.host + ' in your browser');
