@@ -56,25 +56,31 @@ function makeResume($in) {
   resume.bio.firstName = $in.firstName;
   resume.bio.lastName = $in.lastName;
   resume.bio.email.personal = $in.emailAddress;
-  resume.bio.profiles.twitter = $in.primaryTwitterAccount.providerAccountName;
+  if ($in.primaryTwitterAccount) {
+    resume.bio.profiles.twitter = $in.primaryTwitterAccount.providerAccountName;
+  };
   resume.bio.websites.linkedIn = $in.publicProfileUrl;
   resume.bio.summary = $in.summary;
   
-  var collection = $in.phoneNumbers.values;
-  if (collection) {
-    for (i = 0, max = collection.length; i < max; i += 1) {
-      log('adding phone ' + collection[i].phoneType + ' ' + collection[i].phoneNumber);
-      resume.bio['phone'][collection[i].phoneType] = collection[i].phoneNumber;
+  if ($in.phoneNumbers) {
+    var collection = $in.phoneNumbers.values;
+    if (collection) {
+      for (i = 0, max = collection.length; i < max; i += 1) {
+        log('adding phone ' + collection[i].phoneType + ' ' + collection[i].phoneNumber);
+        resume.bio['phone'][collection[i].phoneType] = collection[i].phoneNumber;
+      }
     }
   }
 
-  resume['references'] = $in.recommendationsReceived.values.map(function (obj) {
-    log('adding reference from ' + obj.recommender.firstName + ' ' + obj.recommender.lastName);
-    return {
-      name: obj.recommender.firstName + ' ' + obj.recommender.lastName,
-      reference: obj.recommendationText
-    };
-  });
+  if ($in.recommendationsReceived){
+    resume['references'] = $in.recommendationsReceived.values.map(function (obj) {
+      log('adding reference from ' + obj.recommender.firstName + ' ' + obj.recommender.lastName);
+      return {
+        name: obj.recommender.firstName + ' ' + obj.recommender.lastName,
+        reference: obj.recommendationText
+      };
+    });
+  }
   
   if ($in.publications) {
     resume['publications'] = $in.publications.values.map(function (obj) {
@@ -88,8 +94,9 @@ function makeResume($in) {
     });
   };
   
+  var work = [];
   if ($in.positions) {
-    resume['work'] = $in.positions.values.map(function (obj) {
+    work  = $in.positions.values.map(function (obj) {
       log('adding work ' + obj.company.name);
       return {
         company: obj.company.name,
@@ -102,6 +109,24 @@ function makeResume($in) {
       }
     });
   };
+  var projects = [];
+  if ($in.projects) {
+    projects  = $in.projects.values.map(function (obj) {
+      return {
+        company: obj.name,
+        position: "",
+        website: obj.url,
+        startDate: "",
+        endDate: "",
+        summary: obj.description,
+        highlights: []
+      }
+    });
+  };
+
+  resume['work'] = [];
+  resume['work'].push(work);
+  resume['work'].push(projects);
 
   if ($in.educations) {
     resume['education'] = $in.educations.values.map(function (obj) {
@@ -135,7 +160,7 @@ function makeResume($in) {
 app.get('/', function(req, res) {
   if (req.session.accessToken) {
     var linkedIn = LinkedIn.init(req.session.accessToken);
-    linkedIn.people.me(["id", "first-name", "last-name", "headline", "industry", "summary", "positions", "picture-url", "skills:(id)", "languages", "educations", "projects"], function(err, $in) {
+    linkedIn.people.me(["id", "first-name", "last-name", "headline", "industry", "summary", "positions", "picture-url", "languages", "educations", "projects", "specialties", "email-address", "publications", "skills", "phone-numbers", "twitter-accounts", "primary-twitter-account", "courses", "recommendations-received"], function(err, $in) {
       req.session.$in = $in;
       console.error(JSON.stringify($in));
       resume = makeResume($in);

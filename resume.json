@@ -1,0 +1,134 @@
+{
+    "basics": {
+        "name": "Nicolás Pace",
+        "email": "nicopace@gmail.com",
+        "phone": "+549-291-447-3039",
+        "summary": "Innovative, solutions-driven professional with eight years’ extensive senior level experience. Leads cross-functional projects to reach organization objectives, mentoring junior developers through complex projects to aid in professional development. Solves complex technical issues related to business applications, while communicating solutions to business areas. Impeccable integrity and work ethic.",
+        "profiles": [{
+          "network": "Twitter",
+          "username": "nicopace",
+          "url": "https://twitter.com/nicopace"
+        }, {
+          "network": "Github",
+          "username": "nicopace",
+          "url": "https://github.com/nicopace/"
+        }, {
+          "network": "Linkedin",
+          "username": "nickar",
+          "url": "https://www.linkedin.com/in/nickar"
+        }],
+        "location": {
+          "address": "Alberti 678",
+          "postalCode": "8000",
+          "city": "Bahía Blanca",
+          "countryCode": "AR",
+          "region": "Buenos Aires"
+        }
+    },
+    "work": [{
+        "company": "Jobsync",
+        "position": "Backend developer",
+        "website": "http://www.jobsync.com/",
+        "startDate": "2014-05-01",
+        "summary": "I started as a backend developer, and quickly turned into the devops/developer that also does frontend.",
+        "highlights": ["Organized the development workflow", "Implemented new API module using Django-REST-Framework", "Incremented test coverage from 0% to 20%", "Proposed migration to Docker", "Automated Vagrant environment creation using Fabric", "Helped newcomers to get started with the project"]
+    }, {
+        "company": "Unixono",
+        "position": "Partner",
+        "website": "http://www.unixono.com.ar/",
+        "startDate": "2010-01-01",
+        "summary": "My responsibilities include architecting and designing solutions to customers, company public relations, and technical leading.",
+        "highlights": ["I applied all my knowledge of open source tecnologies to empower the team to quickly prototype and test the technologies involved in the platform and give arguments to the client to invest the Smart Bus Stop project, using the Django Framework.",
+            "Helped developers introducing them in the geospatial world, and quickly integrated the many open-data required for the SMS Bus Information Service develped for the Bahia Blanca Municipality, developed in Twisted.",
+            "Integrated the right tools to the QuePasaBahiaBlanca open-data platform, as I always stay up to date with cutting-edge open-source technology. This is an HTML5 site featuring visualizations of open-data about pollution, developed using technologies such as Twitter Bootstrap and DygraphJS.",
+            "Helped the client to assess all the technical concerns to implement Electrosmart, a mobile Electrocardiogram application, and to reuse as much code as they could through the diferent supported platforms, using Sencha Touch 2, Javascript Canvas, Phonegap 2, Bluetooth in an almost real-time mobile data logger which forwarded data to a cloud storage, visualized the data in-app and commanded the acquisitor."
+        ]
+    }, {
+        "company": "Inkpro.net",
+        "position": "Web Developer",
+        "website": "http://www.inkpro.net/",
+        "startDate": "2004-01-01",
+        "endDate": "2009-12-01",
+        "summary": "Development of photo management application for a medium enterprise (100 + employees), application platform using Apache Jakarta Tomcat, Servlets, JSP, JDBC, Javascript, Struts2 (Webwork at first).\nIn the last year and a half there was a renovation that involved migrating this initial system to a more structured model, this time using the following technologies: AndroMDA, Hibernate, Spring, DWR, Acegi (now Spring Security), ExtJS.",
+        "highlights": []
+    }, {
+        "company": "ITalentos",
+        "position": "IT Consultant",
+        "website": "http://www.italentos.com.ar/",
+        "startDate": "2008-05-01",
+        "endDate": "2009-02-01",
+        "summary": "ITalentos is a human resources recruiting company focused on IT.\nI participated in the gestation of the company providing innovative ideas and synergy with human resources and associated companies.",
+        "highlights": ["I implemented a technical knowledge base aimed at non-technical personnel on technology topics: the system aims to be a reference of technical terms for recruiters with expertise in human resources, but without technical skills.\nThese data was harvested using technologies based on the semantic web: RDF, SPARQL, python, php, sqlite, XQuery.\nVarious web scrappers were developed in python, with the aim of structuring data and integrate web systems with proprietary systems, to facilitate searches in external sources."]
+    }, {
+        "company": "Tenaris",
+        "position": "Intern at Quality Laboratory at Siderca - Campana",
+        "website": "http://www.tenaris.com/en/default.aspx",
+        "startDate": "2007-01-01",
+        "endDate": "2007-01-30",
+        "summary": "I was part of the Summer Educational Intership program. I was assigned to the Product Quality laboratory within the seamless pipe Plant, Tenaris-Siderca.",
+        "highlights": [
+          "Automated the process of validating the material tests, implemented in CLIPS, an inference system.",
+          "Was responsible for identifying required tasks to conform with the ISO-17025 laboratory quality in relation to computer systems, backups, and other areas of concern.",
+          "Wrote procedures that describe the steps to follow in case of contingencies with respect to the data. Procedures were developed primarily for the recovery of offline backups, and defined the framework for an implementation of automated backups whithin the laboratory, in conjunction with the IT sector."]
+    }, {
+        "company": "Universidad Nacional del Sur",
+        "position": "Teaching Assistant",
+        "website": "http://www.uns.edu.ar/",
+        "startDate": "2005-11-01",
+        "endDate": "2008-12-01",
+        "summary": "I have been teaching in several topics, among them: Object Oriented Programming, Elements of Programming, Algorithm and Data Structures, Computer Graphics, Computer Organization and Introduction to Object Oriented Programming",
+        "highlights": []
+    }, {
+        "company": "GNC Salustri",
+        "position": "Research Engineer",
+        "website": "http://www.salustri.com.ar/index.php/en/",
+        "startDate": "2002-05-01",
+        "endDate": "2007-08-01",
+        "summary": "Embedded Systems Development for the adaptation of CNG on vehicles that don\"t support it.\nDevelopments based on Microchip PIC and Freescale microcontrollers.",
+        "highlights": []
+    }],
+    "education": [{
+        "institution": "Universidad Nacional del Sur",
+        "startDate": "2002-01-01",
+        "endDate": "2008-01-01",
+        "area": "Computer Science",
+        "summary": "",
+        "studyType": "Engineer",
+        "courses": []
+    }],
+    "volunteer": [],
+    "awards": [],
+    "publications": [],
+    "skills": [{
+        "name": "User Interface",
+        "level": "intermediate",
+        "keywords": ["HTML", "CSS", "Bootstrap"]
+    }, {
+        "name": "Programming Languages",
+        "level": "master",
+        "keywords": ["Python", "Javascript", "BASH", "PHP", "Java", "C"]
+    }, {
+        "name": "Database/Backends",
+        "level": "master",
+        "keywords": ["MySQL", "PostgreSQL", "PostGIS", "MongoDB"]
+    }, {
+        "name": "API/SDK/Frameworks",
+        "level": "master",
+        "keywords": ["Django", "Flask", "ExtJS", "Sencha Touch", "AngularJS", "BackboneJS", "Phonegap", "jQuery", "Drupal", "Spring", "Arduino"]
+    }, {
+        "name": "DevOps",
+        "level": "intermediate",
+        "keywords": ["Fabric", "Puppet", "Docker", "Amazon Services"]
+    }],
+    "languages": [{
+        "language": "Spanish",
+        "fluency": "native"
+    }, {
+        "language": "English",
+        "fluency": "proficient"
+    }, {
+        "language": "Italian",
+        "fluency": "elementary"
+    }],
+    "references": []
+}

@@ -1,5 +1,5 @@
 module.exports = {
-  apiKey: 'Your API Key',
-  secretKey: 'Your Secret Key',
-  host: 'http://resume.example.com'
+  apiKey: '78nl3y5yfj67x5',
+  secretKey: 'PxoJx5zqTJVfHQyx',
+  host: 'http://dev.cv.dev:8000'
 }
